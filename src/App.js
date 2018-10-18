@@ -1,28 +1,17 @@
-import React, { Component } from 'react';
+// @flow
+import React from 'react';
 import logo from './logo.svg';
+import Test from './components/Test/';
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+type Props = {}
+
+const App = (props: Props) => (
+  <div className="App">
+    <header className="App-header">
+      <img src={logo} className="App-logo" alt="logo" />
+    </header>
+  </div>
+);
 
 export default App;
