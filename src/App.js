@@ -30,6 +30,7 @@ class App extends React.Component<null, State> {
   getForecast = async () => {
     this.setState({
       error: false,
+      forecast: { list: [] },
     });
     try {
       const { searchTerm } = this.state;
@@ -54,7 +55,7 @@ class App extends React.Component<null, State> {
     });
   }
 
-  processError(e: {response: { data: { cod: string}}}) {
+  processError(e: { response: { data: { cod: string } } }) {
     if (e.response.data.cod === '404') {
       this.setState({
         forecast: { list: [] },
@@ -81,9 +82,10 @@ class App extends React.Component<null, State> {
         />
         <Error error={error} />
         {noResults
-          ? (
-            <NoResults />
-          ) : (
+          && <NoResults />
+        }
+        {forecast.list.length > 0
+          && (
             <WeatherWidget
               data={forecast}
             />

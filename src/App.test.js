@@ -24,6 +24,7 @@ describe('<App />', () => {
       expect(wrapper.state('forecast')).toEqual(Mock);
       expect(wrapper.state().noResults).toEqual(false);
       expect(wrapper.find('WeatherWidget').props().data).toEqual(Mock);
+      expect(wrapper.find('WeatherWidget')).toHaveLength(1);
     });
 
     it('should on a 500 response set state.error to true', async () => {
@@ -39,6 +40,7 @@ describe('<App />', () => {
       wrapper.update();
 
       expect(wrapper.state('error')).toEqual(true);
+      expect(wrapper.find('Error').props().error).toEqual(true);
       expect(processErrorSpy).toHaveBeenCalledWith(error);
     });
 
